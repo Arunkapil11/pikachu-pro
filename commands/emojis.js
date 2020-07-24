@@ -1,0 +1,26 @@
+const Discord = require("discord.js");
+
+exports.run = (client, message, args) => {
+
+  const guild = message.guild;
+  const embed = new Discord.MessageEmbed()
+    .setAuthor(`${guild.name}'s Custom Emojis`, guild.iconURL)
+    message.channel.send(guild.emojis.map(e=>e.toString()).join(" "));
+  //message.channel.send({embed});
+}
+
+exports.conf = {
+  enabled: true,
+  guildOnly: true,
+  aliases: ['emotes'],
+  permLevel: 0
+}
+
+exports.help = {
+  name: 'emojis', 
+  description: 'Shows all current server custom emojis.', 
+  usage: 'emojis', 
+  module: 'Other', 
+  permit: ' ', 
+  alias: '/ emotes'
+}
